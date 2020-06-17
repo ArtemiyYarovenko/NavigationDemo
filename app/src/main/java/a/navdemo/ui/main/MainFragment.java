@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import a.navdemo.R;
 
@@ -39,7 +40,14 @@ public class MainFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.mainToSecond);
+                EditText userText = getView().findViewById(R.id.userText);
+
+                MainFragmentDirections.MainToSecond action =
+                        MainFragmentDirections.mainToSecond();
+
+                action.setMessage(userText.getText().toString());
+
+                Navigation.findNavController(view).navigate(action);
             }
         });
     }

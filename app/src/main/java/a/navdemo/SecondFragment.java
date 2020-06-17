@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -55,6 +56,17 @@ public class SecondFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        TextView argText = getView().findViewById(R.id.argText);
+        SecondFragmentArgs args = SecondFragmentArgs.fromBundle(getArguments());
+        String message = args.getMessage();
+        argText.setText(message);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
